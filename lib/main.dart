@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:widget_flutter_utils/widget/List/DropdowButton_Widget.dart';
-import 'package:widget_flutter_utils/widget/List/ListTile_Wdget.dart';
+import 'package:widget_flutter_utils/widget/List/ListView_Widget.dart';
  
 void main() => runApp(MyApp());
  
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
         home: Scaffold(
-          body: ListTilePage(lista: lista),
+          body: ListViewPage(lista: lista),
         ),
     );
   }

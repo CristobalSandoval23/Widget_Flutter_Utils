@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class ListTilePage extends StatefulWidget {
+class ListViewPage extends StatefulWidget {
    List lista;
-  ListTilePage({
+  ListViewPage({
     @required this.lista,
     });
 
   @override
-  _ListTilePageState createState() => _ListTilePageState();
+  _ListViewPageState createState() => _ListViewPageState();
 }
 
-class _ListTilePageState extends State<ListTilePage> {
+class _ListViewPageState extends State<ListViewPage> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
