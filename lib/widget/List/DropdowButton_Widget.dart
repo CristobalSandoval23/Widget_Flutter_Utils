@@ -3,19 +3,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-// DOCUMENTACIÓN DE DROPDOWBUTTON 
+// DOCUMENTACIÓN DE
 // https://api.flutter.dev/flutter/material/DropdownButton/DropdownButton.html
 
-class DropdowButtonPage extends StatefulWidget {
-  DropdowButtonPage({Key key}) : super(key: key);
+// ignore: must_be_immutable
+class DropdownButtonWidget extends StatefulWidget  {
+   
+    String textoSeleccionado;
+    List lista;
 
+  DropdownButtonWidget ({
+  this.textoSeleccionado,
+  this.lista,
+
+ });
   @override
-  _DropdowButtonPageState createState() => _DropdowButtonPageState();
+  _DropdownButtonWidgetState createState() => _DropdownButtonWidgetState();
 }
 
-class _DropdowButtonPageState extends State<DropdowButtonPage> {
-
-  String selecciona,texto = 'hola';
+class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
 
   @override
   Widget build(BuildContext context) { 
@@ -26,12 +32,11 @@ class _DropdowButtonPageState extends State<DropdowButtonPage> {
            Center(
              child: DropdownButton(
                        elevation: 10,
-                        hint: Text(texto),
-                        items: listaDinamica(),
+                        hint: Text(widget.textoSeleccionado),
+                        items: listaDinamica(widget.lista),
                         onChanged: (opt){
                           setState(() {
-                            texto = opt;
-                            selecciona = opt;
+                            widget.textoSeleccionado = opt;
                           });
                         },
                         style: TextStyle(
@@ -40,24 +45,17 @@ class _DropdowButtonPageState extends State<DropdowButtonPage> {
                           height: 2,
                           fontStyle: FontStyle.italic,
                           ),
-                        // onTap: (){Navigator.popAndPushNamed(context, 'ListTile');},
                         ),
            ),
-           Text(texto)
          ],
        ),
-             );
-           }  
-           
- 
+      );
+    }  
 }
 
-  List<DropdownMenuItem<String>> listaDinamica() {
-
+  List<DropdownMenuItem<String>> listaDinamica(lista) {
     List<DropdownMenuItem<String>> listaDrop = [];
-    List lista = ['hola','tres','dos'];
-
-       lista.forEach((item){
+      lista.forEach((item){
             listaDrop.add(DropdownMenuItem(
              child: Text(item),
              value: item,

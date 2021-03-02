@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:widget_flutter_utils/widget/List/DropdowButton_Widget.dart';
+// import 'package:widget_flutter_utils/widget/List/DropdowButton_Widget.dart';
 import 'package:widget_flutter_utils/widget/List/ListTile_Wdget.dart';
  
 void main() => runApp(MyApp());
  
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
+  List lista = [1,2,3,3];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: "ListTile",
-      routes: {
-        'DropdowButton': (BuildContext context) => DropdowButtonPage(),
-        'ListTile': (BuildContext context) => ListTilePage(),
-      },
+        home: Scaffold(
+          body: ListTilePage(lista: lista),
+        ),
     );
   }
 }
