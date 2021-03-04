@@ -5,9 +5,22 @@ import 'package:slimy_card/slimy_card.dart';
 
 class SlimyCardPage extends StatelessWidget {
 
-  // const SlimyCardPage(
-  //   {Key key}
-  //   );
+  String urlImagenBack;
+  String urlImagenFront;
+  String titulo;
+  String subtitulo;
+  String textButtonBack;
+  Color colorDeFondo;
+
+   SlimyCardPage({
+     this.urlImagenBack,
+     this.urlImagenFront,
+     this.titulo,
+     this.subtitulo,
+     this.textButtonBack,
+     this.colorDeFondo = Colors.blue,
+
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -21,22 +34,22 @@ class SlimyCardPage extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: <Widget>[
               SizedBox(height: 100),
-
               // SlimyCard is being called here.
               SlimyCard(
+                color: colorDeFondo,
                 // In topCardWidget below, imagePath changes according to the
                 // status of the SlimyCard(snapshot.data).
                 topCardWidget: topCardWidget((snapshot.data)
-                                    ? 'assets/yo.jpg'
-                                    : 'assets/gitana.jpg'),
-                                bottomCardWidget: bottomCardWidget(),
-                                ),
-                              ],
-                            );
-                          }),
-                        ),
-                      );
-                  }
+                                    ? urlImagenBack
+                                    : urlImagenFront),
+                bottomCardWidget: bottomCardWidget(),
+                ),
+              ],
+            );
+          }),
+        ),
+      );
+  }
 
         
 topCardWidget(String imagePath) {
@@ -61,12 +74,12 @@ topCardWidget(String imagePath) {
         ),
         SizedBox(height: 15),
         Text(
-          'The Rock',
+          titulo,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         SizedBox(height: 15),
         Text(
-          'He asks, what your name is. But!',
+          subtitulo,
           style: TextStyle(
               color: Colors.white.withOpacity(0.8),
               fontSize: 12,
@@ -79,7 +92,7 @@ topCardWidget(String imagePath) {
                 
 Widget bottomCardWidget() {
     return Text(
-      'It doesn\'t matter \nwhat your name is.',
+      textButtonBack,
       style: TextStyle(
         color: Colors.white,
         fontSize: 12,
