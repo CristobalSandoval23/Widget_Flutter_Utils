@@ -30,6 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   slimy_card: ^1.0.4
   flutter_swiper: ^1.1.6
+  flutter_local_notifications: ^4.0.1+1
+  timezone: ^0.6.1
   
 dev_dependencies:
   flutter_test:

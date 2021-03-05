@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'prueba3',
+      initialRoute: 'prueba',
       routes: {
         'prueba'  : (BuildContext context) => SlidingCardsView(),
         'prueba2'  : (BuildContext context) => HomePage(),
