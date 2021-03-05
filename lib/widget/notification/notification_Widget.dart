@@ -6,25 +6,23 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 
-class NotificationPage extends StatelessWidget {
+class NotificationWidget{
     String title;
   String mensaje;
   int temporizador;
   BuildContext context;
 
-   NotificationPage({
+   NotificationWidget({
     this.title,
     this.mensaje,
     this.temporizador,
     });
   FlutterLocalNotificationsPlugin fltrNotification;
 
-@override
+ init()async {
 
-void initState() {
     tz.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation('America/Santiago')); 
-      // initializing();
     var androidInitilize = new AndroidInitializationSettings('app_icon');
     var iOSinitilize = new IOSInitializationSettings();
     var initilizationsSettings =
@@ -35,12 +33,21 @@ void initState() {
       );
 }
 
- Future  get showNotification async {
+ Future showNotification() async {
     var androidDetails = new AndroidNotificationDetails(
         "Channel ID", "Desi programmer", "This is my channel",
         importance: Importance.max,
-        sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
-        priority: Priority.high,
+        icon: 'app_icon',
+        sound: RawResourceAndroidNotificationSound('breaking_benjamin_far_away'),
+        largeIcon: DrawableResourceAndroidBitmap('app_icon'),
+        priority: Priority.max,
+        color: Colors.blue,
+        fullScreenIntent: true, // deja fijo la notification en la Screen in true
+        usesChronometer : true, // muestra un cronometro al estar en TRUE
+        showProgress: true,
+        maxProgress: 10,
+        progress: 9,
+        subText: 'Termino el descanso',
         );
     var iSODetails = new IOSNotificationDetails();
     var generalNotificationDetails =
@@ -52,12 +59,21 @@ void initState() {
          generalNotificationDetails, 
          payload: 'Hoooollla');
   }
- Future zonedScheduleNotification() async {
+ Future zonedScheduleNotification(int fecha) async {
     var androidDetails = new AndroidNotificationDetails(
         "Channel ID", "Desi programmer", "This is my channel",
         importance: Importance.max,
-        sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
-        priority: Priority.high,
+        icon: 'app_icon',
+        sound: RawResourceAndroidNotificationSound('breaking_benjamin_far_away'),
+        largeIcon: DrawableResourceAndroidBitmap('app_icon'),
+        priority: Priority.max,
+        color: Colors.blue,
+        fullScreenIntent: true, // deja fijo la notification en la Screen in true
+        usesChronometer : true, // muestra un cronometro al estar en TRUE
+        showProgress: true,
+        maxProgress: 10,
+        progress: 9,
+        subText: 'Termino el descanso',
         );
     var iSODetails = new IOSNotificationDetails();
     var generalNotificationDetails =
@@ -67,12 +83,63 @@ void initState() {
          0,
          title, 
          mensaje, 
-         tz.TZDateTime.now(tz.local).add(Duration(seconds: temporizador)),
+         _netxinstanceofFryday(fecha),
          generalNotificationDetails, 
          payload: 'Hoooollla', 
          androidAllowWhileIdle: true,
          uiLocalNotificationDateInterpretation:
         UILocalNotificationDateInterpretation.absoluteTime);
+  }
+
+    tz.TZDateTime _netxinstanceofFryday(int fecha) {
+    tz.TZDateTime scheduleDate = _nextIntanceOfTenAM();
+    while(scheduleDate.weekday  != fecha ){
+      scheduleDate = scheduleDate.add(Duration(days: 1));
+    }
+    return scheduleDate;
+
+  }
+
+  tz.TZDateTime _nextIntanceOfTenAM() {
+
+    final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
+    tz.TZDateTime scheduleDate = tz.TZDateTime(tz.local, now.year,now.month, now.day,19,41 );
+    if( scheduleDate.isBefore(now)){
+      scheduleDate = scheduleDate.add(Duration(days: 1));
+    }
+    return scheduleDate;
+
+
+  }
+
+ Future periodicallyShowNotification(RepeatInterval repetirCada) async {
+    var androidDetails = new AndroidNotificationDetails(
+        "Channel ID", "Desi programmer", "This is my channel",
+        importance: Importance.max,
+        icon: 'app_icon',
+        sound: RawResourceAndroidNotificationSound('breaking_benjamin_far_away'),
+        largeIcon: DrawableResourceAndroidBitmap('app_icon'),
+        priority: Priority.max,
+        color: Colors.blue,
+        fullScreenIntent: true, // deja fijo la notification en la Screen in true
+        usesChronometer : true, // muestra un cronometro al estar en TRUE
+        showProgress: true,
+        maxProgress: 10,
+        progress: 9,
+        subText: 'Termino el descanso',
+        );
+    var iSODetails = new IOSNotificationDetails();
+    var generalNotificationDetails =
+        new NotificationDetails(android: androidDetails,iOS: iSODetails);
+
+    await fltrNotification.periodicallyShow(
+         0,
+         title, 
+         mensaje, 
+         repetirCada,
+         generalNotificationDetails, 
+         payload: 'Hoooollla', 
+         androidAllowWhileIdle: true);
   }
 
 Future _notificationSelected(String payload) async {
@@ -82,10 +149,4 @@ Future _notificationSelected(String payload) async {
       );
 }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Container(),
-    );
-  }
 }
