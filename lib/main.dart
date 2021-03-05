@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:widget_flutter_utils/widget/List/Card_Beautiful_Widget.dart';
+import 'package:widget_flutter_utils/page/Card_Parallax_Page.dart';
+import 'package:widget_flutter_utils/page/Card_Dos_page.dart';
+import 'package:widget_flutter_utils/page/Card_Simple.dart';
 
 void main() => runApp(MyApp());
  
@@ -10,9 +12,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'prueba',
+      initialRoute: 'prueba3',
       routes: {
         'prueba'  : (BuildContext context) => SlidingCardsView(),
+        'prueba2'  : (BuildContext context) => HomePage(),
+        'prueba3'  : (BuildContext context) => Home(),
       },);
   }
 }
