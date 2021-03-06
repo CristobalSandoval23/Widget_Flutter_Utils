@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widget_flutter_utils/page/Card_Parallax_Page.dart';
 import 'package:widget_flutter_utils/page/Card_Dos_page.dart';
 import 'package:widget_flutter_utils/page/Card_Simple.dart';
+import 'package:widget_flutter_utils/page/pdf_page.dart';
 import 'package:widget_flutter_utils/widget/Huella/Huella_Widget.dart';
 
 void main() => runApp(MyApp());
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
         'prueba2'  : (BuildContext context) => HomePage(),
         'prueba3'  : (BuildContext context) => Home(),
         'prueba4'  : (BuildContext context) => HuellaDigitalWidget(),
+        'prueba5'  : (BuildContext context) => PdfView(),
       },);
   }
 }
+
