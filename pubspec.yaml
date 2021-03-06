@@ -32,6 +32,7 @@ dependencies:
   flutter_swiper: ^1.1.6
   flutter_local_notifications: ^4.0.1+1
   timezone: ^0.6.1
+  local_auth: ^1.1.0
   
 dev_dependencies:
   flutter_test:
