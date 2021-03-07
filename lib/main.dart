@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widget_flutter_utils/page/Card_Parallax_Page.dart';
 import 'package:widget_flutter_utils/page/Card_Dos_page.dart';
 import 'package:widget_flutter_utils/page/Card_Simple.dart';
+import 'package:widget_flutter_utils/page/Card_vista_page.dart';
 import 'package:widget_flutter_utils/page/pdf_page.dart';
 import 'package:widget_flutter_utils/widget/Huella/Huella_Widget.dart';
 
@@ -14,13 +15,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'prueba',
+      initialRoute: 'prueba6',
       routes: {
         'prueba'  : (BuildContext context) => SlidingCardsView(),
         'prueba2'  : (BuildContext context) => HomePage(),
         'prueba3'  : (BuildContext context) => Home(),
         'prueba4'  : (BuildContext context) => HuellaDigitalWidget(),
         'prueba5'  : (BuildContext context) => PdfView(),
+        'prueba6'  : (BuildContext context) => ListPrueba(),
       },);
   }
 }
